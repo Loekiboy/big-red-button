@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> The Big Red Button </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .red-button {
+            background-color: #ff0000;
+            border: none;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 15px #990000;
+            transition: all 0.1s ease;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .red-button:active {
+            box-shadow: 0 5px #990000;
+            transform: translateY(10px);
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="status">Don't press the button</h1>
+        <button class="red-button" id="theButton" onclick="buttonClicked()">PRESS ME</button>
+    </div>
+
+    <script>
+        let clicks = 0;
+        const statusText = document.getElementById('status');
+        const button = document.getElementById('theButton');
+        function buttonClicked() {
+            clicks++;
+            if (clicks === 1) {
+                statusText.textContent = "You pressed the button once. Don't do it again!";
+            } else if (clicks === 5) {
+                statusText.textContent = "Seriously? Don't press it ever again!";
+            } else if (clicks === 10) {
+                statusText.textContent = "Now I'm getting mad!";
+                button.style.backgroundColor = "#cc0000";
+            } else if (clicks === 15) {
+                statusText.textContent = "Okay, that's it! The button is now disabled.";
+                button.style.display = "none";
+            }
+            
+        }
+    </script>
+</body>
+</html>
